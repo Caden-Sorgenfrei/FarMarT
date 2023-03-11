@@ -40,6 +40,15 @@ public class InvoiceLeasedEquipment extends InvoiceItem {
 			System.out.println(rentalPeriod);
 			double total = Math.round((getFee() * (rentalPeriod / 30.0)) * 100.0) / 100.0;
 			
+			int tax = 0;
+			if(total >= 10000 && total < 100000) {
+				tax = 500;
+			} else if(total >= 100000) {
+				tax = 1500;
+			}
+			
+			total += tax;
+			
 			return total;	
 	}
 
